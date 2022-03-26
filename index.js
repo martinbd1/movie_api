@@ -5,6 +5,50 @@ const app = express();
 
 app.use(morgan('common'));
 
+//JSON Movie Data
+let topMovies = [
+    {
+        title: 'The Terminator',
+        director: 'James Cameron'
+    },
+    {
+        title: 'The Terminator 2: Judgment Day',
+        director: 'James Cameron'
+    },
+    {
+        title: 'Predator',
+        director: 'John McTiernan'
+    },
+    {
+        title: 'Total Recall',
+        director: 'Paul Verhoeven'
+    },
+    {
+        title: 'True Lies',
+        director: 'James Cameron'
+    },    
+    {
+        title: 'Commando',
+        director: 'Mark L. Lester'
+    },
+    {
+        title: 'The Running Man',
+        director: 'Paul Michael Glaser'
+    },
+    {
+        title: 'The Last Action Hero',
+        director: 'John McTiernan'
+    },
+    {
+        title: 'Conan the Barbarian',
+        director: 'John Milius'
+    },
+    {
+        title: 'Predator',
+        director: 'John McTiernan'
+    },
+];
+
 //Get Requests
 app.get('/movies', (req, res) =>{
     res.json(topMovies);
@@ -12,10 +56,6 @@ app.get('/movies', (req, res) =>{
 
 app.get('/', (req, res) => {
     res.send('Welcome to my myFlix app!');
-});
-
-app.get('/documentation.html', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
 });
 
 //static file route
