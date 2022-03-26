@@ -44,8 +44,8 @@ let topMovies = [
         director: 'John Milius'
     },
     {
-        title: 'Predator',
-        director: 'John McTiernan'
+        title: 'Terminator 3: Rise of thhe Machines',
+        director: 'Jonathan Mostow'
     },
 ];
 
