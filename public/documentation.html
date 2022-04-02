@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>MyMovies API Documentation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -15,6 +16,93 @@
         movies, directors, and genres. Users will be able to sign up, update their <br>
         personal information, and create a list of their favorite movies.
     </p>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Request</th>
+                <th scope="col">URL</th>
+                <th scope="col">HTTP Method</th>
+                <th scope="col">Query parameters</th>
+                <th scope="col">Request body data format</th>
+                <th scope="col">Response body data format</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Return a list of all movies to the user</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>None</td>
+                <td>A JSON object holding data about all movies</td>
+            </tr>
+            <tr>
+                <td>Return data about a single movie by title to the user</td>
+                <td>/movies/[title]</td>
+                <td>GET</td>
+                <td>:title</td>
+                <td>None</td>
+                <td>A JSON object holding data about the selected movie containing description, genre, director and imgURL.</td>
+            </tr>
+            <tr>
+                <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
+                <td>/movies/genres/[genre]</td>
+                <td>GET</td>
+                <td>:genre</td>
+                <td>None</td>
+                <td>A JSON object holding data about the selected genre.</td>
+            </tr>
+            <tr>
+                <td>Return data about a director (bio, birth year, death year) by name</td>
+                <td>/movies/directors/[name]</td>
+                <td>GET</td>
+                <td>:name</td>
+                <td>None</td>
+                <td>A JSON object holding data about the selected director. </td>
+            </tr>
+            <tr>
+                <td>Allow new users to register</td>
+                <td>/users</td>
+                <td>POST</td>
+                <td>None</td>
+                <td>A JSON object holding data about the user to add.</td>
+                <td>A JSON object holding data about added user including ID.</td>
+            </tr>
+            <tr>
+                <td>Allow users to update their user info (username)</td>
+                <td>/users/[username]</td>
+                <td>PUT</td>
+                <td>:username</td>
+                <td>A JSON object holding the new username.</td>
+                <td>A JSON object with the updated user profile.</td>
+            </tr>
+            <tr>
+                <td>Allow users to add a movie to their list of favorites</td>
+                <td>/users/[username]/[movie]</td>
+                <td>POST</td>
+                <td>:username, :movie</td>
+                <td>None</td>
+                <td>A text message indicating the movie was added</td>
+            </tr>
+            <tr>
+                <td>Allow users to remove a movie from their list of favorites</td>
+                <td>/users/[username]/[movie]</td>
+                <td>DELETE</td>
+                <td>:username, :movie</td>
+                <td>None</td>
+                <td>A text message indicating the movie was deleted</td>
+            </tr>
+            <tr>
+                <td>Allow existing users to deregister</td>
+                <td>/users/[username]</td>
+                <td>DELETE</td>
+                <td>:username</td>
+                <td>None</td>
+                <td>A message indicating the user was deregistered</td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 
