@@ -43,7 +43,27 @@
                 <td>GET</td>
                 <td>:title</td>
                 <td>None</td>
-                <td>A JSON object holding data about the selected movie containing description, genre, director and imgURL.</td>
+                <td>A JSON object holding data about the selected movie containing description, genre, director and
+                    imgURL. Example:
+                    <pre><code>
+{
+    title: 'The Terminator',
+    year: '1984',
+    genre: {
+    name: 'Action',
+    description: '-',
+},
+    director: {
+    name: 'James Cameron',
+    birth: '1954',
+    death: '-',
+    io: '-',
+},
+    imgUrl: '-',
+    featured: ''
+},
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
@@ -51,7 +71,14 @@
                 <td>GET</td>
                 <td>:genre</td>
                 <td>None</td>
-                <td>A JSON object holding data about the selected genre.</td>
+                <td>A JSON object holding data about the selected genre. Example:
+                    <pre><code>
+{
+    name: 'Action',
+    description: '-',
+},
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Return data about a director (bio, birth year, death year) by name</td>
@@ -59,23 +86,67 @@
                 <td>GET</td>
                 <td>:name</td>
                 <td>None</td>
-                <td>A JSON object holding data about the selected director. </td>
+                <td>A JSON object holding data about the selected director. Example:
+                    <pre><code>
+{
+    name: 'James Cameron',
+    birth: '1954',
+    death: '-',
+    bio: '-',
+},
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Allow new users to register</td>
                 <td>/users</td>
                 <td>POST</td>
                 <td>None</td>
-                <td>A JSON object holding data about the user to add.</td>
-                <td>A JSON object holding data about added user including ID.</td>
+                <td>A JSON object holding data about the user to add.
+                    <pre><code>
+{
+    username: 'User1',
+    email: 'User1@gmail.com',
+    birthday: '07/23/1987',
+    favorites: []
+}
+                    </code></pre>
+                </td>
+                <td>A JSON object holding data about added user including ID.
+                    <pre><code>
+{
+    "id": '1',
+    "username": "User1",
+    "email": "User1@gmail.com",
+    "birthday": "07/23/1987",
+    "favorites": []
+}
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Allow users to update their user info (username)</td>
                 <td>/users/[username]</td>
                 <td>PUT</td>
                 <td>:username</td>
-                <td>A JSON object holding the new username.</td>
-                <td>A JSON object with the updated user profile.</td>
+                <td>A JSON object holding the new username.
+                    <pre><code>
+{
+    "username": "User2"
+}
+                    </code></pre>
+                </td>
+                <td>A JSON object with the updated user profile.
+                    <pre><code>
+{
+    id: '1',
+    username: 'User2',
+    mail: 'User11@gmail.com',
+    birthday: '07/23/1987',
+    favorites: []
+}
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Allow users to add a movie to their list of favorites</td>
