@@ -47,20 +47,19 @@
                     imgURL. Example:
                     <pre><code>
 {
-    title: 'The Terminator',
-    year: '1984',
-    genre: {
-    name: 'Action',
-    description: '-',
-},
-    director: {
-    name: 'James Cameron',
-    birth: '1954',
-    death: '-',
-    io: '-',
-},
-    imgUrl: '-',
-    featured: ''
+    "Title": "The Terminator",
+    "Description": "-",
+    "Genre": {
+    "Name": "Action",
+    "Description": "-"
+    },
+    "Director": {
+    "Name": "James Cameron",
+    "Bio": "-",
+    },
+    "Actors": ["-"]
+    "ImagePath": "-"",
+    "Featured": "-"
 },
                     </code></pre>
                 </td>
@@ -74,8 +73,8 @@
                 <td>A JSON object holding data about the selected genre. Example:
                     <pre><code>
 {
-    name: 'Action',
-    description: '-',
+    "Name: "Action",
+    "Description: "-",
 },
                     </code></pre>
                 </td>
@@ -89,10 +88,8 @@
                 <td>A JSON object holding data about the selected director. Example:
                     <pre><code>
 {
-    name: 'James Cameron',
-    birth: '1954',
-    death: '-',
-    bio: '-',
+    "Name": "James Cameron",
+    "Bio": "-"
 },
                     </code></pre>
                 </td>
@@ -104,22 +101,23 @@
                 <td>None</td>
                 <td>A JSON object holding data about the user to add.
                     <pre><code>
-{
-    username: 'User1',
-    email: 'User1@gmail.com',
-    birthday: '07/23/1987',
-    favorites: []
+                        {
+    "Username": "Fakename",
+    "Password": "password123",
+    "Email": "Fakename@gmail.com",
+    "Birthday": "1980-01-01T00:00:00.000+00:00",
+    "FavoriteMovies": []
 }
                     </code></pre>
                 </td>
                 <td>A JSON object holding data about added user including ID.
                     <pre><code>
 {
-    "id": '1',
-    "username": "User1",
-    "email": "User1@gmail.com",
-    "birthday": "07/23/1987",
-    "favorites": []
+    "Username": "Fakename",
+    "Password": "password123",
+    "Email": "Fakename@gmail.com",
+    "Birthday": "1980-01-01T00:00:00.000+00:00",
+    "FavoriteMovies": []
 }
                     </code></pre>
                 </td>
@@ -132,43 +130,43 @@
                 <td>A JSON object holding the new username.
                     <pre><code>
 {
-    "username": "User2"
+    "Username": "User2"
 }
                     </code></pre>
                 </td>
                 <td>A JSON object with the updated user profile.
                     <pre><code>
 {
-    id: '1',
-    username: 'User2',
-    mail: 'User11@gmail.com',
-    birthday: '07/23/1987',
-    favorites: []
+    "Username": "User2",
+    "Password": "password123",
+    "Email": "Fakename@gmail.com",
+    "Birthday": "1980-01-01T00:00:00.000+00:00",
+    "FavoriteMovies": []
 }
                     </code></pre>
                 </td>
             </tr>
             <tr>
                 <td>Allow users to add a movie to their list of favorites</td>
-                <td>/users/[username]/[movie]</td>
+                <td>/users/[username]/movies/[movieID]</td>
                 <td>POST</td>
-                <td>:username, :movie</td>
+                <td>:username, :movieID</td>
                 <td>None</td>
                 <td>A text message indicating the movie was added</td>
             </tr>
             <tr>
                 <td>Allow users to remove a movie from their list of favorites</td>
-                <td>/users/[username]/[movie]</td>
+                <td>/users/[username]/movies/[movieID]</td>
                 <td>DELETE</td>
-                <td>:username, :movie</td>
+                <td>:username, :movieID</td>
                 <td>None</td>
                 <td>A text message indicating the movie was deleted</td>
             </tr>
             <tr>
                 <td>Allow existing users to deregister</td>
-                <td>/users/[username]</td>
+                <td>/users/[Username]</td>
                 <td>DELETE</td>
-                <td>:username</td>
+                <td>:Username</td>
                 <td>None</td>
                 <td>A message indicating the user was deregistered</td>
             </tr>
