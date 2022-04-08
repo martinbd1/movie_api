@@ -10,10 +10,15 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-
 app.use(morgan('common'));
 app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+let auth = require('./auth')(app);
+
+const passport = require('passport');
+require('./passport');
 
 //Mongoose to connect to that database
 mongoose.connect('mongodb://localhost:27017/myflixDB', {
@@ -29,7 +34,7 @@ app.get('/', (req, res) => {
 
 
 //Get all movies (1)+
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
         .then((movie) => {
             res.status(201).json(movie);
