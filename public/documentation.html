@@ -35,7 +35,27 @@
                 <td>GET</td>
                 <td>None</td>
                 <td>None</td>
-                <td>A JSON object holding data about all movies</td>
+                <td>A JSON object holding data about all movies. Example:
+                    <pre><code>
+{
+    "Title": "The Terminator",
+    "Description": "A human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity's future salvation.",
+    "Genre": {
+        "Name": "Action",
+        "Description": "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats."
+    },
+    "Director": {
+        "Name": "James Cameron",
+        "Bio": "James Francis Cameron is a Canadian filmmaker. Best known for making science fiction and epic films.",
+        "Birth": "1954"
+        "Death": ""
+    },
+    "ImagePath": "terminator.png",
+    "Featured": true
+},
+...
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Return data about a single movie by title to the user</td>
@@ -48,18 +68,19 @@
                     <pre><code>
 {
     "Title": "The Terminator",
-    "Description": "-",
+    "Description": "A human soldier is sent from 2029 to 1984 to stop an almost indestructible cyborg killing machine, sent from the same year, which has been programmed to execute a young woman whose unborn son is the key to humanity's future salvation.",
     "Genre": {
-    "Name": "Action",
-    "Description": "-"
+        "Name": "Action",
+        "Description": "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats."
     },
     "Director": {
-    "Name": "James Cameron",
-    "Bio": "-",
+        "Name": "James Cameron",
+        "Bio": "James Francis Cameron is a Canadian filmmaker. Best known for making science fiction and epic films.",
+        "Birth": "1954"
+        "Death": ""
     },
-    "Actors": ["-"]
-    "ImagePath": "-"",
-    "Featured": "-"
+    "ImagePath": "terminator.png",
+    "Featured": true
 },
                     </code></pre>
                 </td>
@@ -74,7 +95,7 @@
                     <pre><code>
 {
     "Name: "Action",
-    "Description: "-",
+    "Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats.",
 },
                     </code></pre>
                 </td>
@@ -89,7 +110,9 @@
                     <pre><code>
 {
     "Name": "James Cameron",
-    "Bio": "-"
+    "Bio": "James Francis Cameron is a Canadian filmmaker. Best known for making science fiction and epic films.",
+    "Birth": "1954",
+    "Death": ""
 },
                     </code></pre>
                 </td>
@@ -101,7 +124,7 @@
                 <td>None</td>
                 <td>A JSON object holding data about the user to add.
                     <pre><code>
-                        {
+{
     "Username": "Fakename",
     "Password": "password123",
     "Email": "Fakename@gmail.com",
@@ -152,7 +175,17 @@
                 <td>POST</td>
                 <td>:username, :movieID</td>
                 <td>None</td>
-                <td>A text message indicating the movie was added</td>
+                <td>A message indicating the movie was added
+                    <pre><code>
+{
+    "Username": "User2",
+    "Password": "password123",
+    "Email": "Fakename@gmail.com",
+    "Birthday": "1980-01-01T00:00:00.000+00:00",
+    "FavoriteMovies": ["624e1f889b3660ff4dcc80a7"]
+}
+                    </code></pre>
+                </td>
             </tr>
             <tr>
                 <td>Allow users to remove a movie from their list of favorites</td>
@@ -160,7 +193,17 @@
                 <td>DELETE</td>
                 <td>:username, :movieID</td>
                 <td>None</td>
-                <td>A text message indicating the movie was deleted</td>
+                <td>A message indicating the movie was deleted
+                    <pre><code>
+{
+    "Username": "User2",
+    "Password": "password123",
+    "Email": "Fakename@gmail.com",
+    "Birthday": "1980-01-01T00:00:00.000+00:00",
+    "FavoriteMovies": []
+}
+                    </code></pre>                   
+                </td>
             </tr>
             <tr>
                 <td>Allow existing users to deregister</td>
@@ -168,7 +211,11 @@
                 <td>DELETE</td>
                 <td>:Username</td>
                 <td>None</td>
-                <td>A message indicating the user was deregistered</td>
+                <td>A message indicating the user was deregistered
+                    <pre><code>
+User2 was deleted
+                    </code></pre>
+                </td>
             </tr>
         </tbody>
     </table>
