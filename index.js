@@ -146,13 +146,12 @@ app.post('/users',
         check('Username', 'Username is required').isLength({
             min: 5
         }),
-        check('Username', 'Username contains non alphanumeric charaters - not allowed').isAlphanumeric(),
+        check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
         check('Password', 'Password is required').not().isEmpty(),
         check('Email', 'Email does not appear to be valid').isEmail()
-
     ], (req, res) => {
 
-        // check he validation object for errors
+        // check the validation object for errors
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -164,10 +163,11 @@ app.post('/users',
         let hashedPassword = Users.hashPassword(req.body.Password);
         Users.findOne({
                 Username: req.body.Username
-            })
+            }) // Search to see if a user with the requested username already exists
             .then((user) => {
                 if (user) {
-                    return res.status(400).send(req.body.Username + 'already exists');
+                    //If the user is found, send a response that it already exists
+                    return res.status(400).send(req.body.Username + ' already exists');
                 } else {
                     Users
                         .create({
@@ -182,7 +182,7 @@ app.post('/users',
                         .catch((error) => {
                             console.error(error);
                             res.status(500).send('Error: ' + error);
-                        })
+                        });
                 }
             })
             .catch((error) => {
@@ -299,6 +299,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0',() => {
- console.log('Listening on Port ' + port);
+app.listen(port, '0.0.0.0', () => {
+    console.log('Listening on Port ' + port);
 });
