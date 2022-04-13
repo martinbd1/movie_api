@@ -267,7 +267,6 @@ app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', {
 });
 
 
-
 //DELETE user (9)+
 app.delete('/users/:Username', passport.authenticate('jwt', {
     session: false
