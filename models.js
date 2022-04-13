@@ -45,11 +45,11 @@ let userSchema = mongoose.Schema({
 
 userSchema.statics.hashPassword = (password) => {
     return bcrypt.hashSync(password, 10);
-}
+};
 
-userSchema.methods.validatePassword = function(password) {
+userSchema.methods.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.Password);
-}
+};
 
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
