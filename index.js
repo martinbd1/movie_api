@@ -202,7 +202,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {
         session: false
     }),
     [ // Validation logic here for request
-        check('Username', 'Username is required (min length 5').isLength({
+        check('Username', 'Username is required (min length 5)').isLength({
             min: 5
         })
     ], (req, res) => {
@@ -219,8 +219,8 @@ app.put('/users/:Username', passport.authenticate('jwt', {
         Users.findOne({
                 Username: req.params.Username
             })
-            .then((user) => {
-                if (user) {
+            .then((users) => {
+                if (users) { //make sure user name does not already exists
                     return res.status(400).send(req.body.Username + ' already exists');
                 } else {
 
@@ -244,6 +244,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {
                                 res.json(updatedUser);
                             }
                         });
+
                 }
             })
     });
