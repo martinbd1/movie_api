@@ -148,7 +148,7 @@ app.post('/users',
     //or use .isLength({min: 5}) which means
     //minimum value of 5 characters are only allowed
     [
-        check('Username', 'Username is required').isLength({
+        check('Username', 'Username is required (min length 5)').isLength({
             min: 5
         }),
         check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -200,9 +200,9 @@ app.post('/users',
 //PUT allow user to update info (username) (6)+
 app.put('/users/:Username', passport.authenticate('jwt', {
         session: false
-    }), // Validation logic here for request
-    [
-        check('Username', 'Username is required').isLength({
+    }),
+    [ // Validation logic here for request
+        check('Username', 'Username is required (min length 5').isLength({
             min: 5
         })
     ], (req, res) => {
@@ -216,26 +216,36 @@ app.put('/users/:Username', passport.authenticate('jwt', {
             });
         }
 
-        Users.findOneAndUpdate({
+        Users.findOne({
                 Username: req.params.Username
-            }, {
-                $set: {
-                    Username: req.body.Username,
-                    Password: req.body.Password,
-                    Email: req.body.Email,
-                    Birthday: req.body.Birthday
-                }
-            }, {
-                new: true
-            }, // This line makes sure that the updated document is returned
-            (err, updatedUser) => {
-                if (err) {
-                    console.error(err);
-                    res.status(500).send('Error: ' + err);
+            })
+            .then((user) => {
+                if (user) {
+                    return res.status(400).send(req.body.Username + ' already exists');
                 } else {
-                    res.json(updatedUser);
+
+                    Users.findOneAndUpdate({
+                            Username: req.params.Username
+                        }, {
+                            $set: {
+                                Username: req.body.Username,
+                                Password: req.body.Password,
+                                Email: req.body.Email,
+                                Birthday: req.body.Birthday
+                            }
+                        }, {
+                            new: true
+                        }, // This line makes sure that the updated document is returned
+                        (err, updatedUser) => {
+                            if (err) {
+                                console.error(err);
+                                res.status(500).send('Error: ' + err);
+                            } else {
+                                res.json(updatedUser);
+                            }
+                        });
                 }
-            });
+            })
     });
 
 
