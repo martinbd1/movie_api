@@ -216,37 +216,26 @@ app.put('/users/:Username', passport.authenticate('jwt', {
             });
         }
 
-        Users.findOne({
+        Users.findOneAndUpdate({
                 Username: req.params.Username
-            })
-            .then((updatedUser) => {
-                if (updatedUser) { //make sure user name does not already exists
-                    return res.status(400).send(req.body.Username + ' already exists');
-                } else {
-
-                    Users.findOneAndUpdate({
-                            Username: req.params.Username
-                        }, {
-                            $set: {
-                                Username: req.body.Username,
-                                Password: req.body.Password,
-                                Email: req.body.Email,
-                                Birthday: req.body.Birthday
-                            }
-                        }, {
-                            new: true
-                        }, // This line makes sure that the updated document is returned
-                        (err, updatedUser) => {
-                            if (err) {
-                                console.error(err);
-                                res.status(500).send('Error: ' + err);
-                            } else {
-                                res.json(updatedUser);
-                            }
-                        });
-
+            }, {
+                $set: {
+                    Username: req.body.Username,
+                    Password: req.body.Password,
+                    Email: req.body.Email,
+                    Birthday: req.body.Birthday
                 }
-            })
+            }, {
+                new: true
+            }, // This line makes sure that the updated document is returned
+            (err, updatedUser) => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).send('Error: ' + err);
+                } else {
+                    res.json(updatedUser);
+                }
+            });
     });
 
 
