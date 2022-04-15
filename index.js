@@ -219,8 +219,11 @@ app.put('/users/:Username', passport.authenticate('jwt', {
         Users.findOne({
                 Username: req.params.Username
             })
-            .then((user) => {
-                if (!user) { //make sure user name does not already exists
+            .then((updatedUser) => {
+                if (updatedUser) { //make sure user name does not already exists
+                    return res.status(400).send(req.body.Username + ' already exists');
+                } else {
+
                     Users.findOneAndUpdate({
                             Username: req.params.Username
                         }, {
@@ -241,8 +244,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {
                                 res.json(updatedUser);
                             }
                         });
-                } else {
-                    return res.status(400).send(req.body.Username + ' already exists');
+
                 }
             })
     });
