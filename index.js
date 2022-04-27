@@ -63,10 +63,10 @@ app.get('/', (req, res) => {
 
 
 //Get all movies (1)+
-//app.get('/movies', passport.authenticate('jwt', {
-//    session: false
-//}), (req, res) => {
-app.get('/movies', function (req, res) { //restore when authentication middleware once you’ve given users the ability to authenticate themselves with a login form when using the client application.
+app.get('/movies', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    //app.get('/movies', function (req, res) { //restore when authentication middleware once you’ve given users the ability to authenticate themselves with a login form when using the client application.
     Movies.find()
         .then((movie) => {
             res.status(201).json(movie);
