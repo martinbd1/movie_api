@@ -15,7 +15,7 @@ const {
 const cors = require('cors');
 // app.use(cors());
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com/movies'];
 
 app.use(cors({
     origin: (origin, callback) => {
