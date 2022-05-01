@@ -15,7 +15,7 @@ const {
 const cors = require('cors');
 //app.use(cors()); //lets all domain allowed
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com/movies', 'https://res.cloudinary.com/'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com/movies'];
 
 app.use(cors({
     origin: (origin, callback) => {
