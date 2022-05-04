@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 morgan = require('morgan');
 bodyParser = require('body-parser');
 uuid = require('uuid');
@@ -13,9 +13,9 @@ const {
 } = require('express-validator');
 
 const cors = require('cors');
-//app.use(cors()); //lets all domain allowed
+app.use(cors()); //lets all domain allowed
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com/'];
+//let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflixapp1987.herokuapp.com/'];
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({
 let auth = require('./auth')(app);
 
 const passport = require('passport');
-const res = require("express/lib/response");
+const res = require('express/lib/response');
 require('./passport');
 
 //Mongoose to connect to that database
