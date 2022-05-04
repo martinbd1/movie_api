@@ -91,6 +91,26 @@ app.get('/users', passport.authenticate('jwt', {
         });
 });
 
+//Get single user
+app.get('/users/:Username', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    Users.findOne({
+            Username: req.params.Username
+        })
+        .then((user) => {
+            if (user) {
+                res.json(user);
+            } else {
+                res.status(400).send("User not found")
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
 
 //GET Request for a sinlge movie, by title (2)+
 app.get('/movies/:Title', passport.authenticate('jwt', {
