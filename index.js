@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 morgan = require('morgan');
 bodyParser = require('body-parser');
 uuid = require('uuid');
@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({
 let auth = require('./auth')(app);
 
 const passport = require('passport');
-const res = require('express/lib/response');
+const res = require("express/lib/response");
 require('./passport');
 
 //Mongoose to connect to that database
