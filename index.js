@@ -347,7 +347,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', {
 
 // Send documentation page
 app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', {
+    res.sendFile('/documentation.html', {
         root: __dirname
     });
 });
