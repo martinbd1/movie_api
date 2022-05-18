@@ -352,7 +352,6 @@ app.get('/documentation', (req, res) => {
     });
 });
 
-
 //static file route
 app.use(express.static('public'));
 
