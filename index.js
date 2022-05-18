@@ -33,7 +33,6 @@ const Users = Models.User;
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
-my
 
 app.use(bodyParser.urlencoded({
     extended: true
