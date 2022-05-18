@@ -33,6 +33,7 @@ const Users = Models.User;
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
+my
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -342,6 +343,13 @@ app.delete('/users/:Username', passport.authenticate('jwt', {
             console.error(err);
             res.status(500).send('Error: ' + err);
         });
+});
+
+// Send documentation page
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', {
+        root: __dirname
+    });
 });
 
 
