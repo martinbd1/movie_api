@@ -345,12 +345,12 @@ app.delete('/users/:Username', passport.authenticate('jwt', {
         });
 });
 
-// // Send documentation page
-// app.get('/documentation', (req, res) => {
-//     res.sendFile('public/documentation.html', {
-//         root: __dirname
-//     });
-// });
+// Send documentation page
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', {
+        root: __dirname
+    });
+});
 
 //static file route
 app.use(express.static('public'));
